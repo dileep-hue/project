@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .project-list {
+            list-style: none;
+            padding: 0;
+        }
+        .project-list li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 5px solid #333;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        .project-list li.completed {
+            border-left-color: green;
+        }
+        .project-title {
+            font-size: 18px;
+            margin: 0;
+        }
+        .project-description {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+        .add-project {
+            display: flex;
+            margin-top: 20px;
+        }
+        .add-project input, .add-project textarea {
+            flex: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .add-project button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Project Management</h1>
+</header>
+
+<div class="container">
+    <h2>Ongoing Projects</h2>
+    <ul class="project-list" id="projectList">
+        <li>
+            <h3 class="project-title">Project 1: Website Redesign</h3>
+            <p class="project-description">Revamping the company website with new UI design and mobile-friendly layout.</p>
+        </li>
+        <li>
+            <h3 class="project-title">Project 2: New Marketing Campaign</h3>
+            <p class="project-description">Launching the Q4 marketing campaign with a focus on social media ads.</p>
+        </li>
+    </ul>
+
+    <div class="add-project">
+        <input type="text" id="projectTitle" placeholder="Project Title">
+        <textarea id="projectDescription" placeholder="Project Description"></textarea>
+        <button onclick="addProject()">Add Project</button>
+    </div>
+</div>
+
+<script>
+    function addProject() {
+        const projectTitle = document.getElementById('projectTitle').value;
+        const projectDescription = document.getElementById('projectDescription').value;
+
+        if (projectTitle && projectDescription) {
+            const projectList = document.getElementById('projectList');
+
+            const newProject = document.createElement('li');
+            const titleElement = document.createElement('h3');
+            titleElement.className = 'project-title';
+            titleElement.textContent = projectTitle;
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.className = 'project-description';
+            descriptionElement.textContent = projectDescription;
+
+            newProject.appendChild(titleElement);
+            newProject.appendChild(descriptionElement);
+
+            projectList.appendChild(newProject);
+
+            // Clear the input fields after adding
+            document.getElementById('projectTitle').value = '';
+            document.getElementById('projectDescription').value = '';
+        }
+    }
+</script>
+
+</body>
+</html>
